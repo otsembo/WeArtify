@@ -1,5 +1,7 @@
 package com.example.model
 
+import org.jetbrains.exposed.sql.Table
+
 @kotlinx.serialization.Serializable
 data class Art(
     val id:Long,
@@ -17,3 +19,22 @@ data class Art(
     val location:String,
     val seller: Seller
 )
+
+object ArtPieces : Table("art_pieces"){
+    val id = long("id").autoIncrement()
+    val art_category = reference("category", ArtCategories.id)
+    val name = varchar("title", 255)
+    val desc = text("description")
+    val price = double("price")
+    val displayPrice = double("display_price")
+    val thumbnail = reference("thumbnail", ArtImages.id)
+    val banner = reference("banner", ArtImages.id)
+    val stock = integer("stock")
+    val tmpStock = integer("tmp_stock")
+    val refundPolicy = text("refund_policy")
+    val paymentPolicy = text("payment_policy")
+    val seller = reference("seller_id", Sellers.id)
+
+    override val primaryKey: PrimaryKey
+        get() = PrimaryKey(id)
+}

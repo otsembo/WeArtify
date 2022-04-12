@@ -18,7 +18,7 @@ data class User(
     val dateLastLoggedIn:String? = null,
 )
 
-object Users : Table(){
+object Users : Table("users"){
     val id = long("id").autoIncrement()
     val name = text("full_name")
     val email = text("email_address")

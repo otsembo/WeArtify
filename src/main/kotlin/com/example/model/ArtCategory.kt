@@ -8,7 +8,7 @@ data class ArtCategory(
     val name:String,
 )
 
-object ArtCategories : Table(){
+object ArtCategories : Table("art_category"){
     val id = long("id").autoIncrement()
     val name = varchar("name", 255)
     override val primaryKey: PrimaryKey = PrimaryKey(id)

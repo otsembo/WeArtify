@@ -1,8 +1,6 @@
 package com.example.data.database
 
-import com.example.model.ArtCategories
-import com.example.model.Roles
-import com.example.model.Users
+import com.example.model.*
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import io.ktor.application.*
@@ -14,7 +12,8 @@ import javax.sql.DataSource
 fun Application.configureDB(){
     Database.connect(DbProperties.connect())
     transaction {
-        SchemaUtils.create(Roles, Users, ArtCategories)
+        SchemaUtils.create(Roles, Users, ArtCategories, ImageType, ArtImages, Sellers,
+            ArtPieces, CartStatuses, Carts, OrderStatuses, PaymentMethods, Orders, Payments, Trackers)
         commit()
     }
 }
