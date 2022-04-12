@@ -1,5 +1,6 @@
 package com.example.data.database
 
+import com.example.model.ArtCategories
 import com.example.model.Roles
 import com.example.model.Users
 import com.zaxxer.hikari.HikariConfig
@@ -13,7 +14,7 @@ import javax.sql.DataSource
 fun Application.configureDB(){
     Database.connect(DbProperties.connect())
     transaction {
-        SchemaUtils.create(Roles, Users)
+        SchemaUtils.create(Roles, Users, ArtCategories)
         commit()
     }
 }
