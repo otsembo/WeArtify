@@ -25,4 +25,21 @@ class RoleRepository() {
         return (rolesResponse)
     }
 
+    fun getRoleById(id:Long) : HashMap<String, Role?>{
+        var role:Role? = null
+        transaction {
+
+            RoleEntity.findById(id)?.let {
+                role = Role(it.id.value, it.name)
+            }
+
+            commit()
+        }
+
+        val roleResponse = HashMap<String, Role?>()
+        roleResponse["role"] = role
+
+        return roleResponse
+    }
+
 }

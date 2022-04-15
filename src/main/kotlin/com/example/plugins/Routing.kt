@@ -2,6 +2,7 @@ package com.example.plugins
 
 import com.example.data.repository.AppRepository
 import com.example.presentation.controllers.homeRoute
+import com.example.presentation.controllers.rolesRouting
 import io.ktor.routing.*
 import io.ktor.http.*
 import io.ktor.application.*
@@ -13,4 +14,5 @@ fun Application.configureRouting() {
     val appRepository = AppRepository()
 
     homeRoute(appRepository)
+    rolesRouting(appRepository)
 }

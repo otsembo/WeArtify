@@ -1,5 +1,9 @@
 package com.example.model
 
+import org.jetbrains.exposed.dao.Entity
+import org.jetbrains.exposed.dao.EntityClass
+import org.jetbrains.exposed.dao.LongEntity
+import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.dao.id.LongIdTable
 import org.jetbrains.exposed.sql.Table
 
@@ -11,4 +15,9 @@ data class ArtCategory(
 
 object ArtCategories : LongIdTable("art_category"){
     val name = varchar("name", 255)
+}
+
+class ArtCategoryEntity(id: EntityID<Long>) : LongEntity(id){
+    companion object : EntityClass<Long, ArtCategoryEntity>(ArtCategories)
+    var name by ArtCategories.name
 }

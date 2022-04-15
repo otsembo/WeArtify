@@ -18,7 +18,8 @@ data class Art(
     val refundPolicy:String,
     val paymentPolicy:String,
     val location:String,
-    val seller: Seller
+    val seller: Seller,
+    val isActive: Boolean,
 )
 
 object ArtPieces : LongIdTable("art_pieces"){
@@ -34,4 +35,5 @@ object ArtPieces : LongIdTable("art_pieces"){
     val refundPolicy = text("refund_policy")
     val paymentPolicy = text("payment_policy")
     val seller = reference("seller_id", Sellers.id)
+    val isActive = bool("is_active")
 }
