@@ -5,6 +5,7 @@ val exposedVersion: String = "0.37.3"
 val h2Version : String = "2.1.210"
 val hikariVersion : String = "5.0.1"
 val jdbc_version : String = "5.1.37"
+val ktor_auth :String by project
 
 plugins {
     application
@@ -29,6 +30,7 @@ dependencies {
     implementation("io.ktor:ktor-server-core:$ktor_version")
     implementation("io.ktor:ktor-serialization:$ktor_version")
     implementation("io.ktor:ktor-server-netty:$ktor_version")
+    implementation("io.ktor:ktor-auth:$ktor_version")
 
     implementation("org.jetbrains.exposed:exposed-core:$exposedVersion")
     implementation("org.jetbrains.exposed:exposed-dao:$exposedVersion")

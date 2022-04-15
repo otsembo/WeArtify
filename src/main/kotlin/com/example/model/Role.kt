@@ -18,6 +18,6 @@ object Roles : LongIdTable("roles"){
 
 class RoleEntity(id: EntityID<Long>) : Entity<Long>(id){
     companion object : EntityClass<Long, RoleEntity>(Roles)
-    var name by Roles.id
+    var name by Roles.name
 
 }
