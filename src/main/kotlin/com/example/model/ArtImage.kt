@@ -1,5 +1,6 @@
 package com.example.model
 
+import org.jetbrains.exposed.dao.id.LongIdTable
 import org.jetbrains.exposed.sql.Table
 
 @kotlinx.serialization.Serializable
@@ -9,10 +10,7 @@ data class ArtImage(
     val types: ImageTypes,
 )
 
-object ArtImages : Table("art_images"){
-    val id = long("id").autoIncrement()
+object ArtImages : LongIdTable("art_images"){
     val url = text("url",)
     val types = reference("image_types", ImageType.id)
-    override val primaryKey: PrimaryKey?
-        get() = PrimaryKey(id)
 }

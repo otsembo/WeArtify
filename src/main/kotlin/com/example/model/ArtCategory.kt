@@ -1,5 +1,6 @@
 package com.example.model
 
+import org.jetbrains.exposed.dao.id.LongIdTable
 import org.jetbrains.exposed.sql.Table
 
 @kotlinx.serialization.Serializable
@@ -8,8 +9,6 @@ data class ArtCategory(
     val name:String,
 )
 
-object ArtCategories : Table("art_category"){
-    val id = long("id").autoIncrement()
+object ArtCategories : LongIdTable("art_category"){
     val name = varchar("name", 255)
-    override val primaryKey: PrimaryKey = PrimaryKey(id)
 }

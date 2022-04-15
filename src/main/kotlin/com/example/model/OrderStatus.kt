@@ -1,5 +1,6 @@
 package com.example.model
 
+import org.jetbrains.exposed.dao.id.LongIdTable
 import org.jetbrains.exposed.sql.Table
 
 @kotlinx.serialization.Serializable
@@ -8,9 +9,6 @@ data class OrderStatus(
     val status:String,
 )
 
-object OrderStatuses : Table("order_status"){
-    val id = long("id").autoIncrement()
+object OrderStatuses : LongIdTable("order_status"){
     val status = varchar("status", 15)
-    override val primaryKey: PrimaryKey?
-        get() = PrimaryKey(id)
 }

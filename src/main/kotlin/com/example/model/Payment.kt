@@ -1,5 +1,6 @@
 package com.example.model
 
+import org.jetbrains.exposed.dao.id.LongIdTable
 import org.jetbrains.exposed.sql.Table
 import org.jetbrains.exposed.sql.javatime.datetime
 
@@ -18,16 +19,13 @@ enum class PaymentStatus(val status:String){
     NULL("null"), COMPLETE("complete"), PENDING("pending"), FAILED("failed")
 }
 
-object Payments :Table("payments"){
-    val id = long("id").autoIncrement()
+object Payments :LongIdTable("payments"){
     val method = reference("payment_method", PaymentMethods.id)
     val amount = double("amount")
     val date = datetime("date")
     val status = enumeration("payment_status", PaymentStatus::class)
     val user = reference("user_id",Users.id)
     val order = reference("order_id", Orders.id)
-    override val primaryKey: PrimaryKey?
-        get() = PrimaryKey(id)
 }
 
 

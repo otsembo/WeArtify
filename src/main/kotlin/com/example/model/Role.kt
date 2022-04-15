@@ -1,7 +1,10 @@
 package com.example.model
 
 import kotlinx.serialization.Serializable
-import org.jetbrains.exposed.sql.Table
+import org.jetbrains.exposed.dao.Entity
+import org.jetbrains.exposed.dao.EntityClass
+import org.jetbrains.exposed.dao.id.EntityID
+import org.jetbrains.exposed.dao.id.LongIdTable
 
 @Serializable
 data class Role(
@@ -9,8 +12,12 @@ data class Role(
     val name:String
 )
 
-object Roles : Table("roles"){
-    val roleId = integer("id").autoIncrement()
+object Roles : LongIdTable("roles"){
     val name = text("name")
-    override val primaryKey: PrimaryKey = PrimaryKey(roleId,)
+}
+
+class RoleEntity(id: EntityID<Long>) : Entity<Long>(id){
+    companion object : EntityClass<Long, RoleEntity>(Roles)
+    var name by Roles.id
+
 }

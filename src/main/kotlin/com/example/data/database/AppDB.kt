@@ -12,7 +12,7 @@ import javax.sql.DataSource
 fun Application.configureDB(){
     Database.connect(DbProperties.connect())
     transaction {
-        SchemaUtils.create(Roles, Users, ArtCategories, ImageType, ArtImages, Sellers,
+        SchemaUtils.create(Roles, Users, ArtCategories, ImageType, ArtImages, Sellers,HomeBanners,
             ArtPieces, CartStatuses, Carts, OrderStatuses, PaymentMethods, Orders, Payments, Trackers)
         commit()
     }

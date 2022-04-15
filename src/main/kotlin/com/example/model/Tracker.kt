@@ -1,5 +1,6 @@
 package com.example.model
 
+import org.jetbrains.exposed.dao.id.LongIdTable
 import org.jetbrains.exposed.sql.Table
 
 @kotlinx.serialization.Serializable
@@ -15,12 +16,9 @@ enum class TrackerStatus(val status:String){
     NULL("null"), SHIPPED("shipped"), DELIVERED("delivered"), PROCESSING("processing")
 }
 
-object Trackers : Table("order_tracker"){
-    val id = long("id").autoIncrement()
+object Trackers : LongIdTable("order_tracker"){
     val order = reference("order_id", Orders.id)
     val status = enumeration("status", TrackerStatus::class)
     val pickUp = text("pickup_point")
     val dropOff = text("drop_off")
-    override val primaryKey: PrimaryKey?
-        get() = PrimaryKey(id)
 }
