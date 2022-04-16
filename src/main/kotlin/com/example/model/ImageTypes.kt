@@ -19,3 +19,9 @@ class ImageTypeEntity(id:EntityID<Long>) : LongEntity(id){
     companion object :EntityClass<Long, ImageTypeEntity>(ImageType)
     var type by ImageType.type
 }
+
+fun ImageTypeEntity.getImageType() : ImageTypes{
+    return ImageTypes(
+        id.value, type
+    )
+}

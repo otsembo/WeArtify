@@ -21,3 +21,9 @@ class ArtCategoryEntity(id: EntityID<Long>) : LongEntity(id){
     companion object : EntityClass<Long, ArtCategoryEntity>(ArtCategories)
     var name by ArtCategories.name
 }
+
+fun ArtCategoryEntity.getArtCategory() : ArtCategory{
+    return ArtCategory(
+        id.value, name
+    )
+}

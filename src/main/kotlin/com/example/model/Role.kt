@@ -21,3 +21,10 @@ class RoleEntity(id: EntityID<Long>) : Entity<Long>(id){
     var name by Roles.name
 
 }
+
+fun RoleEntity.getRole() : Role{
+    return Role(
+        id.value,
+        name
+    )
+}

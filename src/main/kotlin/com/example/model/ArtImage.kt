@@ -23,3 +23,9 @@ class ArtImageEntity(id:EntityID<Long>) : LongEntity(id){
     var url by ArtImages.url
     var types by ArtImages.types
 }
+
+fun ArtImageEntity.getArtImage() : ArtImage{
+    return ArtImage(
+        id.value, url, ImageTypeEntity[types].getImageType()
+    )
+}

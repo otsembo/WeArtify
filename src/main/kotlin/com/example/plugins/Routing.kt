@@ -1,6 +1,7 @@
 package com.example.plugins
 
 import com.example.data.repository.AppRepository
+import com.example.presentation.controllers.artRoutes
 import com.example.presentation.controllers.homeRoute
 import com.example.presentation.controllers.rolesRouting
 import io.ktor.routing.*
@@ -15,4 +16,5 @@ fun Application.configureRouting() {
 
     homeRoute(appRepository)
     rolesRouting(appRepository)
+    artRoutes(appRepository)
 }

@@ -1,7 +1,6 @@
 package com.example.presentation.controllers
 
 import com.example.data.repository.AppRepository
-import com.example.domain.model.ApiResponse
 import com.example.domain.use_cases.RetrieveArtCategories
 import com.example.presentation.common.showResponse
 import io.ktor.application.*
