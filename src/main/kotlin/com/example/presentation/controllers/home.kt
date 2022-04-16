@@ -2,8 +2,8 @@ package com.example.presentation.controllers
 
 import com.example.data.repository.AppRepository
 import com.example.domain.model.ApiResponse
-import com.example.domain.model.HomePageResponse
 import com.example.domain.use_cases.RetrieveArtCategories
+import com.example.presentation.common.showResponse
 import io.ktor.application.*
 import io.ktor.response.*
 import io.ktor.routing.*
@@ -13,17 +13,52 @@ fun Application.homeRoute(appRepository: AppRepository){
     routing {
 
         get("/"){
-            call.respond( ApiResponse<String>(status = 200, message = "app started successfully", data = null) )
+            call.respond(
+                showResponse(
+                    "app",
+                    data = "started successfully",
+                    responseCode = 200,
+                    message = "app"
+                )
+            )
         }
 
-        get("/home"){
+        get("/home/banners"){
 
-            val banners = appRepository.homeRepository.getActiveHomeBanners()
-            val artCategories = RetrieveArtCategories.fetchCategories()
+            call.respond(
+                showResponse(
+                    dataKey = "banners",
+                    data = appRepository.homeRepository.getBanners(),
+                    responseCode = 200,
+                    message = "success"
+                )
+            )
 
-            val homePageResponse = HomePageResponse(banners,artCategories)
+        }
 
-            call.respond(ApiResponse(status = 200, message = "success", homePageResponse))
+        get("/home/banners/active"){
+
+            call.respond(
+                showResponse(
+                    dataKey = "activeBanners",
+                    data = appRepository.homeRepository.getActiveHomeBanners(),
+                    responseCode = 200,
+                    message = "success"
+                )
+            )
+
+        }
+
+        get("/home/categories"){
+
+            call.respond(
+                showResponse(
+                    dataKey = "categories",
+                    data = RetrieveArtCategories.fetchCategories(),
+                    responseCode = 200,
+                    message = "success"
+                )
+            )
 
         }
 

@@ -28,4 +28,25 @@ class HomeRepository {
         return banners
     }
 
+    fun getBanners(): List<HomeBanner>{
+
+        val banners = ArrayList<HomeBanner>()
+
+        transaction {
+
+            HomeBannerEntity.all().forEach {
+                banners.add(
+                    with(it){
+                        HomeBanner(id.value, imageUrl, isActive, quote, description)
+                    }
+                )
+            }
+
+            commit()
+
+        }
+
+        return banners
+    }
+
 }
