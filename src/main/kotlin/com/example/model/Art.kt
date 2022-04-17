@@ -5,6 +5,7 @@ import org.jetbrains.exposed.dao.LongEntity
 import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.dao.id.LongIdTable
 import org.jetbrains.exposed.sql.Table
+import org.jetbrains.exposed.sql.javatime.datetime
 
 @kotlinx.serialization.Serializable
 data class Art(
@@ -23,6 +24,7 @@ data class Art(
     val location:String,
     val seller: Seller,
     val isActive: Boolean,
+    val dateAdded: String,
 )
 
 object ArtPieces : LongIdTable("art_pieces"){
@@ -39,6 +41,7 @@ object ArtPieces : LongIdTable("art_pieces"){
     val paymentPolicy = text("payment_policy")
     val seller = reference("seller_id", Sellers.id)
     val isActive = bool("is_active")
+    val dateAdded = datetime("date_added")
 }
 
 class ArtEntity(id:EntityID<Long>) : LongEntity(id){
@@ -56,12 +59,14 @@ class ArtEntity(id:EntityID<Long>) : LongEntity(id){
     var paymentPolicy by ArtPieces.paymentPolicy
     var seller by ArtPieces.seller
     var isActive by ArtPieces.isActive
+    var dateAdded by ArtPieces.dateAdded
 }
 
 fun ArtEntity.getArt() : Art{
     return Art(
         id.value, ArtCategoryEntity[art_category].getArtCategory(), name, desc,
         price, displayPrice, ArtImageEntity[thumbnail].getArtImage(), ArtImageEntity[banner].getArtImage(),
-        stock, tmpStock, refundPolicy, paymentPolicy, "", SellersEntity[seller].getSeller(), isActive
+        stock, tmpStock, refundPolicy, paymentPolicy, "", SellersEntity[seller].getSeller(), isActive,
+        dateAdded.toString()
     )
 }
