@@ -47,6 +47,21 @@ fun Application.artRoutes(appRepository: AppRepository){
 
         }
 
+        get("/art/related/{id}"){
+
+            call.respond(
+                showResponse(
+                    dataKey = "related-art",
+                    data = appRepository.artRepository.getRelatedArt(
+                        call.parameters.paramToInt(name = "id", default = 1).toLong()
+                    ),
+                    responseCode = 200,
+                    message = "Success",
+                )
+            )
+
+        }
+
     }
 
 }

@@ -1,9 +1,6 @@
 package com.example.data.repository
 
-import com.example.model.Art
-import com.example.model.ArtEntity
-import com.example.model.ArtPieces
-import com.example.model.getArt
+import com.example.model.*
 import org.jetbrains.exposed.sql.SortOrder
 import org.jetbrains.exposed.sql.and
 import org.jetbrains.exposed.sql.transactions.transaction
@@ -35,6 +32,9 @@ class ArtRepository {
     }
 
 
+    /**
+     * Fetch art pieces within every page
+     * **/
     fun getArt(page:Int, limit:Int) : List<Art>{
 
         initList()
@@ -50,6 +50,25 @@ class ArtRepository {
             }
             commit()
         }
+        return artList
+    }
+
+    fun getRelatedArt(artCategory:Long) : List<Art>{
+        initList()
+
+        transaction {
+
+            ArtEntity.find { (ArtPieces.isActive eq true) and (ArtPieces.art_category eq ArtCategoryEntity[artCategory].id) }
+                .limit(5)
+                .orderBy(ArtPieces.dateAdded to SortOrder.DESC_NULLS_LAST)
+                .forEach {
+                    artList.add(
+                        it.getArt()
+                    )
+                }
+
+        }
+
         return artList
     }
 
