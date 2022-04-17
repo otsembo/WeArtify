@@ -47,13 +47,13 @@ fun Application.artRoutes(appRepository: AppRepository){
 
         }
 
-        get("/art/related/{id}"){
+        get("/art/related/{categoryId}"){
 
             call.respond(
                 showResponse(
                     dataKey = "related-art",
                     data = appRepository.artRepository.getRelatedArt(
-                        call.parameters.paramToInt(name = "id", default = 1).toLong()
+                        call.parameters.paramToInt(name = "categoryId", default = 1).toLong()
                     ),
                     responseCode = 200,
                     message = "Success",
