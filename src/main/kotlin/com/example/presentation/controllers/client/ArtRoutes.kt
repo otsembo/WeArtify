@@ -1,7 +1,7 @@
-package com.example.presentation.controllers
+package com.example.presentation.controllers.client
 
 import com.example.data.repository.AppRepository
-import com.example.model.Art
+import com.example.presentation.common.ApiExtensions.CLIENT_ENDPOINT
 import com.example.presentation.common.paramToInt
 import com.example.presentation.common.showResponse
 import io.ktor.application.*
@@ -12,7 +12,7 @@ fun Application.artRoutes(appRepository: AppRepository){
 
     routing {
 
-        get("/art/{page}/{count}"){
+        get("$CLIENT_ENDPOINT/art/{page}/{count}"){
 
             with(call.parameters){
 
@@ -29,12 +29,9 @@ fun Application.artRoutes(appRepository: AppRepository){
                 )
 
             }
-
-
-
         }
 
-        get("/art/latest"){
+        get("$CLIENT_ENDPOINT/art/latest"){
 
             call.respond(
                 showResponse(
@@ -47,7 +44,7 @@ fun Application.artRoutes(appRepository: AppRepository){
 
         }
 
-        get("/art/related/{categoryId}"){
+        get("$CLIENT_ENDPOINT/art/related/{categoryId}"){
 
             call.respond(
                 showResponse(

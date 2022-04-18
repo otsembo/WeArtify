@@ -15,8 +15,18 @@ fun <T> showResponse(dataKey:String, data:T, responseCode:Int = 200, message:Str
 }
 
 fun Parameters.paramToInt(name:String, default:Int) : Int {
-    return when(val appParam = this[name]){
+    return when(val appParam:String? = this[name]){
         null -> default
-        else -> try{appParam.toInt()}catch (ex:Exception){default}
+        else -> try{
+            appParam.toInt()
+        }catch (ex:Exception){default}
     }
+}
+
+
+object ApiExtensions {
+    //endpoint extensions
+    const val CLIENT_ENDPOINT = "/client"
+    const val ADMIN_ENDPOINT = "/admin"
+    const val SELLER_ENDPOINT = "/seller"
 }

@@ -1,7 +1,8 @@
-package com.example.presentation.controllers
+package com.example.presentation.controllers.client
 
 import com.example.data.repository.AppRepository
 import com.example.domain.use_cases.RetrieveArtCategories
+import com.example.presentation.common.ApiExtensions.CLIENT_ENDPOINT
 import com.example.presentation.common.showResponse
 import io.ktor.application.*
 import io.ktor.response.*
@@ -22,7 +23,7 @@ fun Application.homeRoute(appRepository: AppRepository){
             )
         }
 
-        get("/home/banners"){
+        get("$CLIENT_ENDPOINT/banners"){
 
             call.respond(
                 showResponse(
@@ -35,7 +36,7 @@ fun Application.homeRoute(appRepository: AppRepository){
 
         }
 
-        get("/home/banners/active"){
+        get("$CLIENT_ENDPOINT/banners/active"){
 
             call.respond(
                 showResponse(
@@ -48,7 +49,7 @@ fun Application.homeRoute(appRepository: AppRepository){
 
         }
 
-        get("/home/categories"){
+        get("$CLIENT_ENDPOINT/categories"){
 
             call.respond(
                 showResponse(

@@ -1,14 +1,10 @@
 package com.example.plugins
 
 import com.example.data.repository.AppRepository
-import com.example.presentation.controllers.artRoutes
-import com.example.presentation.controllers.homeRoute
-import com.example.presentation.controllers.rolesRouting
-import io.ktor.routing.*
-import io.ktor.http.*
+import com.example.presentation.controllers.client.artRoutes
+import com.example.presentation.controllers.client.homeRoute
+import com.example.presentation.controllers.client.rolesRouting
 import io.ktor.application.*
-import io.ktor.response.*
-import io.ktor.request.*
 
 fun Application.configureRouting() {
     // repository object
