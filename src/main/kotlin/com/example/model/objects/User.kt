@@ -1,11 +1,9 @@
-package com.example.model
+package com.example.model.objects
 
-import com.example.model.Role
 import org.jetbrains.exposed.dao.EntityClass
 import org.jetbrains.exposed.dao.LongEntity
 import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.dao.id.LongIdTable
-import org.jetbrains.exposed.sql.Table
 import org.jetbrains.exposed.sql.javatime.datetime
 
 @kotlinx.serialization.Serializable

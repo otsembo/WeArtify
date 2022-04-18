@@ -1,7 +1,6 @@
 package com.example.domain.use_cases
 
-import com.example.model.ArtCategory
-import com.example.model.ArtCategoryEntity
+import com.example.model.objects.*
 import org.jetbrains.exposed.sql.transactions.transaction
 
 object RetrieveArtCategories {

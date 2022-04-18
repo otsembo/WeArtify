@@ -30,3 +30,14 @@ object ApiExtensions {
     const val ADMIN_ENDPOINT = "/admin"
     const val SELLER_ENDPOINT = "/seller"
 }
+
+
+object ApiMessages{
+
+
+    const val SUCCESS = "success"
+    const val FAILED = "failed"
+
+    const val POSTED = "posted"
+
+}

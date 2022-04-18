@@ -1,8 +1,6 @@
 package com.example.data.repository
 
-import com.example.model.HomeBanner
-import com.example.model.HomeBannerEntity
-import com.example.model.HomeBanners
+import com.example.model.objects.*
 import org.jetbrains.exposed.sql.transactions.transaction
 
 class HomeRepository {

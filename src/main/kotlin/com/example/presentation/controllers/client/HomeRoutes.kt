@@ -8,7 +8,7 @@ import io.ktor.application.*
 import io.ktor.response.*
 import io.ktor.routing.*
 
-fun Application.homeRoute(appRepository: AppRepository){
+fun Application.homeRouting(appRepository: AppRepository){
 
     routing {
 

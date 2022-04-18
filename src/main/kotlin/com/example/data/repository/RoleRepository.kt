@@ -1,7 +1,6 @@
 package com.example.data.repository
 
-import com.example.model.Role
-import com.example.model.RoleEntity
+import com.example.model.objects.*
 import org.jetbrains.exposed.sql.transactions.transaction
 
 class RoleRepository() {

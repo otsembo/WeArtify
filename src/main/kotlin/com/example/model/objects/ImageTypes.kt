@@ -1,4 +1,4 @@
-package com.example.model
+package com.example.model.objects
 
 import org.jetbrains.exposed.dao.EntityClass
 import org.jetbrains.exposed.dao.LongEntity

@@ -1,6 +1,6 @@
 package com.example.data.database
 
-import com.example.model.*
+import com.example.model.objects.*
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import io.ktor.application.*

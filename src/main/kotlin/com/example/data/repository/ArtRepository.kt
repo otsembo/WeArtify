@@ -1,6 +1,6 @@
 package com.example.data.repository
 
-import com.example.model.*
+import com.example.model.objects.*
 import org.jetbrains.exposed.sql.SortOrder
 import org.jetbrains.exposed.sql.and
 import org.jetbrains.exposed.sql.transactions.transaction
